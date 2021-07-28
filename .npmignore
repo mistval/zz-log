@@ -1,0 +1,6 @@
+src
+.gitignore
+tsconfig.json
+dist/**/*.js.map
+dist/test
+.eslintrc.js

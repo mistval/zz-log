@@ -47,7 +47,7 @@ logger.trace('Bye');
 
 This outputs the following to the console:
 
-![https://raw.githubusercontent.com/mistval/zz-log/main/images/console_basic.png](Output in the console)
+![Output in the console](https://raw.githubusercontent.com/mistval/zz-log/main/images/console_basic.png)
 
 ### Restricting Log Levels
 
@@ -65,7 +65,7 @@ errorOnlyLogger.warn('It does not log this');
 
 This outputs the following to the console:
 
-![https://raw.githubusercontent.com/mistval/zz-log/main/images/restrict_levels.png](Output in the console)
+![Output in the console](https://raw.githubusercontent.com/mistval/zz-log/main/images/restrict_levels.png)
 
 ### NOOP Logger
 
@@ -115,7 +115,7 @@ myLogger.warn({
 
 This outputs the following to the console:
 
-![https://raw.githubusercontent.com/mistval/zz-log/main/images/custom_console.png](Output in the console)
+![Output in the console](https://raw.githubusercontent.com/mistval/zz-log/main/images/custom_console.png)
 
 ### Composite Logger
 
@@ -130,7 +130,7 @@ compositeLogger.warn('I get logged twice!');
 
 This outputs the following to the console:
 
-![https://raw.githubusercontent.com/mistval/zz-log/main/images/composite.png](Output in the console)
+![Output in the console](https://raw.githubusercontent.com/mistval/zz-log/main/images/composite.png)
 
 ### Custom Logger
 

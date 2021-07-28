@@ -9,7 +9,7 @@
     "tscwatch": "tsc --watch",
     "lint": "eslint ./src/**/*.ts",
     "lintfix": "eslint --fix ./src/**/*.ts",
-    "prepublishOnly": "npm run lint && npm run tsc"
+    "prepublishOnly": "npm run lint && rm -rf ./dist && npm run tsc"
   },
   "keywords": ["logging", "logger", "console", "debug", "monitoring"],
   "author": "mistval",

@@ -81,17 +81,17 @@ noopLogger.debug('Or this');
 noopLogger.fatal('Or anything else');
 ```
 
-Alternatively, you could use a ConsoleLogger or other logger, and sets its `logLevel` option to `LogLevel.none`.
+Alternatively, you could use a ConsoleLogger or other logger, and set its `logLevel` option to `LogLevel.none`.
 
 ### Custom ConsoleLogger formatting
 
-You can extend ConsoleLogger and override its functions to custom formatting, for example:
+You can extend ConsoleLogger and override its functions to implement custom formatting, for example:
 
 ```js
 import { ConsoleLogger } from 'zz-log';
 
 class MyConsoleLogger extends ConsoleLogger {
-  // Log custom fields instead of just the "detail" field.
+  // Log custom "part" fields instead of just the "detail" field.
   formatDetail(logItem) {
     return `${logItem.part1} -- ${logItem.part2} -- ${logItem.part3}`;
   }

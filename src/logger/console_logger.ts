@@ -26,6 +26,18 @@ const consoleFuncForLogLevel = {
   [LogLevel.fatal]: console.error,
 };
 
+function stringify(obj: string | object) {
+  if (typeof obj === 'string') {
+    return obj;
+  }
+
+  if (obj.toString === Object.prototype.toString) {
+    return JSON.stringify(obj);
+  }
+
+  return obj.toString();
+}
+
 export class ConsoleLogger extends BaseLogger {
   protected log(info: LogItem, logLevel: LogLevel): void {
     const logFunc = consoleFuncForLogLevel[logLevel];
@@ -36,19 +48,21 @@ export class ConsoleLogger extends BaseLogger {
   }
 
   protected format(logItem: LogItem, logLevel: LogLevel) {
+    const errorPart = this.formatError(logItem);
     const parts = [
       this.formatTimestamp(),
       this.formatLogLevel(logLevel),
       this.formatTitle(logItem),
       this.formatDetail(logItem),
       this.formatSubDetail(logItem),
+      errorPart && `\n${errorPart}`,
     ].filter(isPresent);
 
     return parts.join(' ');
   }
 
   protected formatTimestamp() {
-    return format(new Date(), '[MM/DD/YYYY HH:mm:ss]');
+    return format(new Date(), '[MM/dd/yyyy HH:mm:ss]');
   }
 
   protected formatLogLevel(logLevel: LogLevel) {
@@ -60,7 +74,7 @@ export class ConsoleLogger extends BaseLogger {
       return undefined;
     }
 
-    return logItem.title && Chalk.underline(logItem.title);
+    return logItem.title && Chalk.underline(stringify(logItem.title));
   }
 
   protected formatDetail(logItem: LogItem) {
@@ -68,7 +82,7 @@ export class ConsoleLogger extends BaseLogger {
       ? logItem
       : logItem.detail;
 
-    return detail && Chalk.yellow(detail);
+    return detail && Chalk.yellow(stringify(detail));
   }
 
   protected formatSubDetail(logItem: LogItem) {
@@ -76,6 +90,33 @@ export class ConsoleLogger extends BaseLogger {
       return undefined;
     }
 
-    return logItem.subDetail && `[${Chalk.magenta(logItem.subDetail)}]`;
+    return logItem.subDetail && `[${Chalk.magenta(stringify(logItem.subDetail))}]`;
+  }
+
+  protected formatError(logItem: LogItem) {
+    if (typeof logItem === 'string') {
+      return undefined;
+    }
+
+    const errors = [];
+    let nextError = logItem.error;
+    while (nextError) {
+      errors.push(nextError);
+      nextError = (nextError as any).innerError;
+    }
+
+    if (errors.length === 0) {
+      return undefined;
+    }
+
+    const errorText = errors.map((e, i) => {
+      if (i > 0) {
+        return `Inner Error: ${e.stack}`;
+      }
+
+      return e.stack;
+    }).join('\n');
+
+    return logItem.error && Chalk.red(errorText);
   }
 }

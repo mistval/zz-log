@@ -1,6 +1,6 @@
 {
-  "name": "ts_starter",
-  "version": "1.0.0",
+  "name": "zz-log",
+  "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

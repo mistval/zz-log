@@ -4,3 +4,4 @@ tsconfig.json
 dist/**/*.js.map
 dist/test
 .eslintrc.js
+images

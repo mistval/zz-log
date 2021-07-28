@@ -1,8 +1,9 @@
 {
   "name": "zz-log",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Colorful and extensible logging.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn src",
     "tsc": "tsc",
@@ -11,9 +12,17 @@
     "lintfix": "eslint --fix ./src/**/*.ts",
     "prepublishOnly": "npm run lint && rm -rf ./dist && npm run tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mistval/zz-log.git"
+  },
   "keywords": ["logging", "logger", "console", "debug", "monitoring"],
   "author": "mistval",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mistval/zz-log/issues"
+  },
+  "homepage": "https://github.com/mistval/zz-log#readme",
   "devDependencies": {
     "@types/node": "^15.12.1",
     "@typescript-eslint/eslint-plugin": "^4.28.5",

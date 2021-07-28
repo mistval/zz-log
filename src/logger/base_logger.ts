@@ -5,11 +5,8 @@ import { LogLevel } from './log_level';
 export abstract class BaseLogger implements ILogger {
   public readonly logLevel: LogLevel;
 
-  public readonly componentName: string;
-
-  constructor(options: { logLevel?: LogLevel, componentName?: string } = {}) {
+  constructor(options: { logLevel?: LogLevel } = {}) {
     this.logLevel = options.logLevel ?? LogLevel.all;
-    this.componentName = options.componentName ?? 'Main';
   }
 
   fatal(info: LogItem) {

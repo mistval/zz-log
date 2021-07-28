@@ -149,7 +149,7 @@ class MyCloudLogger extends BaseLogger {
 }
 ```
 
-If that's still not flexible enough, you can also choose to implement the ILogger TypeScript interface (or in plain JS, create a class that implements these functions):
+If that's still not flexible enough, you can also choose to implement the `ILogger` TypeScript interface (or in plain JS, create a class that implements these functions):
 
 ```ts
 export interface ILogger {

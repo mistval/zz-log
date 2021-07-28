@@ -1,7 +1,7 @@
 {
   "name": "zz-log",
   "version": "0.0.0",
-  "description": "",
+  "description": "Colorful and extensible logging.",
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn src",
@@ -11,9 +11,9 @@
     "lintfix": "eslint --fix ./src/**/*.ts",
     "prepublishOnly": "npm run lint && npm run tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "Unlicense",
+  "keywords": ["logging", "logger", "console", "debug", "monitoring"],
+  "author": "mistval",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^15.12.1",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
